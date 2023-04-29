@@ -1,5 +1,5 @@
 .background {
-    background-image: url('/public/images/waldoBackground.jpg');
+    background-image: url('/images/waldoBackground.jpg');
     background-size: cover;
     height: 100vh;
     width: 100vw;
@@ -25,26 +25,28 @@
 }
 
 .one:hover {
-    background-image: url('/public/images/waldoLevel.jpg');
+    background-image: url('/images/waldoLevel.jpg');
     background-size: cover;
 }
 
 .two:hover {
-    background-image: url('/public/images/waldoLevel2.jpg');
+    background-image: url('/images/waldoLevel2.jpg');
     background-size: cover;
 }
 
 .three:hover {
-    background-image: url('/public/images/waldoLevel3.jpg');
+    background-image: url('/images/waldoLevel3.jpg');
     background-size: cover;
 }
 
 
 p {
     margin-left: 3vw;
+    pointer-events: none;
 }
 
 .text-background {
     background-color: black;
     margin-top: 10vh;
+    pointer-events: none;
 }
