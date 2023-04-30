@@ -1,12 +1,30 @@
 import PropTypes from 'prop-types';
+import '../css/gameplay.css'
 
 export function Gameplay(props){
-
-    return(
+    function levelImagePath(){
+        if(props.level === "level one"){
+            return "/images/waldoLevel.jpg"
+        }else if(props.level === "level two"){
+            return "/images/waldoLevel2.jpg"
+        }else if(props.level === "level three"){
+            return "/images/waldoLevel3.jpg"
+        }
+    }
+    
+    return (
         <>
-            <div>{props.level}</div>
+            <div className='top-bar'>
+                <div className='waldo-icon'></div>
+                {/* eslint-disable-next-line react/no-unescaped-entities*/}
+                <h1><span style={{color: "#0498c6"}}>Where's</span><span style={{color: "#f23925"}}> Waldo</span></h1>
+                {/*make it its own component */}
+                <div className='timer'></div>
+            </div>
+            <img src={levelImagePath()} alt="level img"></img>
         </>
     )
+    
 }
 
 Gameplay.propTypes = {
