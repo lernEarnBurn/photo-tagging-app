@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import '../css/gameplay.css'
+import { Timer } from './timer';
 
 export function Gameplay(props){
     function levelImagePath(){
@@ -19,7 +20,7 @@ export function Gameplay(props){
                 {/* eslint-disable-next-line react/no-unescaped-entities*/}
                 <h1><span style={{color: "#0498c6"}}>Where's</span><span style={{color: "#f23925"}}> Waldo</span></h1>
                 {/*make it its own component */}
-                <div className='timer'></div>
+                <Timer/>
             </div>
             <img src={levelImagePath()} alt="level img"></img>
         </>
