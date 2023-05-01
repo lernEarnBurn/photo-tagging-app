@@ -17,24 +17,35 @@ export function Gameplay(props){
     }
 
     const [data, setData] = useState([])
+    const [dataFetched, setDataFetched] = useState(false)
 
     useEffect(() => {
         const fetchData = async () => {
             const q = query(collection(getFirestore(), props.level));
-            const snapshot = await getDocs(q);
+            const snapshot = await getDocs(q)
             const response = snapshot.docs.map(doc => doc.data());
             setData(response);
           };
         fetchData();
-       
-        document.addEventListener('mousedown', checkWin)
+        setDataFetched(true)
     }, [props.level])
+
+    
+       
+    useEffect(() => {
+        if(dataFetched && data.length > 0){
+            document.addEventListener('mousedown', checkWin)
+        }
+    })
+ 
 
     function checkWin(event) {
         const x = event.clientX;
         const y = event.clientY;
-        console.log(`Clicked at (${x}, ${y})`);
-        console.log(data[0].start)
+        
+        if(x >= data[0].start && x <= data[0].end && y >= data[1].start && y <= data[1].end){
+            props.setStage(props.stage + 1)
+        }
     }
       
 
