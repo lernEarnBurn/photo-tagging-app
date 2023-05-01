@@ -8,11 +8,12 @@
     background-color: aliceblue;
     display: flex;
     align-items: center;
+    gap: 11vw;
+    justify-content: space-evenly;
 }
 
 .waldo-icon {
     background-image: url('/images/waldoIcon.png');
-    margin-left: 8vw;
     width: 8vw;
     height: 12vh;
     background-size:cover;
@@ -20,7 +21,6 @@
 
 h1 {
     font-size: 6vh;
-    margin-left:22vw;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
@@ -28,5 +28,4 @@ img {
     background-repeat: no-repeat;
     height: 160vh;
     width: 100%;
-    
 }
