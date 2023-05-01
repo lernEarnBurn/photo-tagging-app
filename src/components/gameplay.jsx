@@ -54,12 +54,14 @@ export function Gameplay(props){
     return (
         <>  
             <div className='top-bar'>
+                <button onClick={() => {props.setStage(props.stage - 1)}} className='back'>Back</button>
                 <div className='waldo-icon'></div>
                 {/* eslint-disable-next-line react/no-unescaped-entities*/}
                 <h1><span style={{color: "#0498c6"}}>Where's</span><span style={{color: "#f23925"}}> Waldo</span></h1>
                 <Timer/>
             </div>
             <img src={levelImagePath()} alt="level img"></img>
+            
             {win ? (
                 <div className='win-message'>
                   <h2>You found Waldo!</h2>
@@ -72,6 +74,8 @@ export function Gameplay(props){
 }
 
 Gameplay.propTypes = {
+    stage: PropTypes.number.isRequired,
+    setStage: PropTypes.func.isRequired,
     level: PropTypes.string.isRequired
 }
 

@@ -8,8 +8,29 @@
     background-color: aliceblue;
     display: flex;
     align-items: center;
-    gap: 20vw;
+    gap: 5vw;
     
+}
+
+.back {
+    margin-left: 3vw;
+    position: relative;
+    padding: 2vh 2vw;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    background-color: #0498c6;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+.back:hover {
+    background-color: #f23925;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
 }
 
 .waldo-icon {
@@ -17,7 +38,8 @@
     width: 8vw;
     height: 12vh;
     background-size:cover;
-    margin-left: 13vw;
+    margin-left: 2vw;
+    margin-right: 10vw;
 }
 
 h1 {

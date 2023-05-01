@@ -19,7 +19,7 @@ function App() {
     case 1:
       return <Gamestart stage={gameStage} setStage={setStage} getLevel={getLevel}/>
     case 2:
-      return <Gameplay level={level}/>
+      return <Gameplay stage={gameStage} setStage={setStage} level={level}/>
   }  
   
 }
