@@ -4,6 +4,9 @@ import { Gamestart } from './components/gamestart'
 import { Gameplay } from './components/gameplay'
 import { Gameover } from './components/gameover'
 
+import { getFirebaseConfig } from './firebase-config'
+import { initializeApp } from 'firebase/app'
+
 function App() {
   const [gameStage, setStage] = useState(1)
   const [level, setLevel] = useState('none')
@@ -22,5 +25,8 @@ function App() {
   }  
   
 }
+
+const firbaseAppConfig = getFirebaseConfig()
+initializeApp(firbaseAppConfig)
 
 export default App
