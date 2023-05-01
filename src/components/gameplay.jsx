@@ -1,7 +1,9 @@
 import PropTypes from 'prop-types';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import '../css/gameplay.css'
 import { Timer } from './timer';
+import { getFirestore, collection, query, getDocs } from 'firebase/firestore'
+
 
 export function Gameplay(props){
     function levelImagePath(){
@@ -14,14 +16,25 @@ export function Gameplay(props){
         }
     }
 
-    useEffect(() => {
-        document.addEventListener('mousedown', handleClick)
-    }, [])
+    const [data, setData] = useState([])
 
-    function handleClick(event) {
+    useEffect(() => {
+        const fetchData = async () => {
+            const q = query(collection(getFirestore(), props.level));
+            const snapshot = await getDocs(q);
+            const response = snapshot.docs.map(doc => doc.data());
+            setData(response);
+          };
+        fetchData();
+       
+        document.addEventListener('mousedown', checkWin)
+    }, [props.level])
+
+    function checkWin(event) {
         const x = event.clientX;
         const y = event.clientY;
         console.log(`Clicked at (${x}, ${y})`);
+        console.log(data[0].start)
     }
       
 
@@ -45,3 +58,4 @@ Gameplay.propTypes = {
     setStage: PropTypes.func.isRequired,
     level: PropTypes.string.isRequired
 }
+
