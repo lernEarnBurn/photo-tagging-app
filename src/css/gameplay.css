@@ -8,8 +8,8 @@
     background-color: aliceblue;
     display: flex;
     align-items: center;
-    gap: 11vw;
-    justify-content: space-evenly;
+    gap: 20vw;
+    
 }
 
 .waldo-icon {
@@ -17,6 +17,7 @@
     width: 8vw;
     height: 12vh;
     background-size:cover;
+    margin-left: 13vw;
 }
 
 h1 {

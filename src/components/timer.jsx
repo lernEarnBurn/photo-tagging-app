@@ -17,6 +17,8 @@ export function Timer(){
 
 
     return (
-        <h1 style={{fontFamily: "digital"}}>{minutes.toString().padStart(2, '0')}:{remainingSeconds.toString().padStart(2, '0')}</h1>
+        <h1 style={{fontFamily: "digital",
+                    position: "absolute", 
+                    right: "10vw",}}>{minutes.toString().padStart(2, '0')}:{remainingSeconds.toString().padStart(2, '0')}</h1>
     )
 }
