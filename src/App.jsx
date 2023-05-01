@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import { Gamestart } from './components/gamestart'
 import { Gameplay } from './components/gameplay'
-import { Gameover } from './components/gameover'
+
 
 import { getFirebaseConfig } from './firebase-config'
 import { initializeApp } from 'firebase/app'
@@ -19,9 +19,7 @@ function App() {
     case 1:
       return <Gamestart stage={gameStage} setStage={setStage} getLevel={getLevel}/>
     case 2:
-      return <Gameplay stage={gameStage} setStage={setStage} level={level}/>
-    case 3:
-      return <Gameover/>
+      return <Gameplay level={level}/>
   }  
   
 }

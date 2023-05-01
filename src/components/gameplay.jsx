@@ -38,20 +38,21 @@ export function Gameplay(props){
         }
     })
  
+    const [win, setWin] = useState(false)
 
     function checkWin(event) {
         const x = event.clientX;
         const y = event.clientY;
         
         if(x >= data[0].start && x <= data[0].end && y >= data[1].start && y <= data[1].end){
-            props.setStage(props.stage + 1)
+            setWin(true)
         }
     }
       
 
     
     return (
-        <>
+        <>  
             <div className='top-bar'>
                 <div className='waldo-icon'></div>
                 {/* eslint-disable-next-line react/no-unescaped-entities*/}
@@ -59,14 +60,18 @@ export function Gameplay(props){
                 <Timer/>
             </div>
             <img src={levelImagePath()} alt="level img"></img>
+            {win ? (
+                <div className='win-message'>
+                  <h2>You found Waldo!</h2>
+                  <button onClick={() => setWin(false)}>Play again</button>
+                </div>
+            ) : null}
         </>
     )
     
 }
 
 Gameplay.propTypes = {
-    stage: PropTypes.number.isRequired,
-    setStage: PropTypes.func.isRequired,
     level: PropTypes.string.isRequired
 }
 
