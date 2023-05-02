@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import '../css/gameplay.css'
 import { Timer } from './timer';
 import { getFirestore, collection, query, getDocs } from 'firebase/firestore'
+import { Button } from './ui/button';
 
 
 export function Gameplay(props){
@@ -46,6 +47,7 @@ export function Gameplay(props){
         
         if(x >= data[0].start && x <= data[0].end && y >= data[1].start && y <= data[1].end){
             setWin(true)
+            /*somehow stop timer and make a winner object when hit leaderboard*/
         }
     }
       
@@ -58,14 +60,15 @@ export function Gameplay(props){
                 <div className='waldo-icon'></div>
                 {/* eslint-disable-next-line react/no-unescaped-entities*/}
                 <h1><span style={{color: "#0498c6"}}>Where's</span><span style={{color: "#f23925"}}> Waldo</span></h1>
-                <Timer/>
+                <Timer win={win}/>
             </div>
             <img src={levelImagePath()} alt="level img"></img>
             
             {win ? (
-                <div className='win-message'>
-                  <h2>You found Waldo!</h2>
-                  <button onClick={() => setWin(false)}>Play again</button>
+                <div className='win-popup'>
+                    <h1 style={{ textAlign : "center"}}><span style={{color: "#f23925"}}>Congrat</span><span style={{color: "#0498c6"}}>ulations!</span></h1>
+                    <input placeholder='Enter Name'/>
+                    <Button/>
                 </div>
             ) : null}
         </>
