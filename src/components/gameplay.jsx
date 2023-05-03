@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import '../css/gameplay.css'
 import { Timer } from './timer';
 import { getFirestore, collection, query, getDocs } from 'firebase/firestore'
-import { Button } from './ui/button';
+
 
 
 export function Gameplay(props){
@@ -68,7 +68,7 @@ export function Gameplay(props){
                 <div className='win-popup'>
                     <h1 style={{ textAlign : "center"}}><span style={{color: "#f23925"}}>Congrat</span><span style={{color: "#0498c6"}}>ulations!</span></h1>
                     <input placeholder='Enter Name'/>
-                    <Button/>
+                    <button>Leaderboard</button>
                 </div>
             ) : null}
         </>
