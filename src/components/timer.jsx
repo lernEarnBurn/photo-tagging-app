@@ -10,6 +10,8 @@ export function Timer(props){
         const interval = setInterval(() => {
             if(props.win === false){
                 setSeconds(seconds => seconds + 1)
+            }else{
+                sendUpSeconds()
             }
         }, 1000)
         return () => clearInterval(interval)
@@ -18,6 +20,10 @@ export function Timer(props){
     const minutes = Math.floor(seconds / 60)
     const remainingSeconds = seconds % 60
 
+
+    function sendUpSeconds(){
+        props.setParentSeconds(seconds)
+    }
 
     return (
         <h1 style={{fontFamily: "digital",
@@ -28,5 +34,6 @@ export function Timer(props){
 
 
 Timer.propTypes = {
-    win: PropTypes.bool.isRequired
+    win: PropTypes.bool.isRequired,
+    setParentSeconds: PropTypes.func.isRequired
 }
