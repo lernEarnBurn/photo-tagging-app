@@ -7,6 +7,7 @@ import { getFirestore, collection, query, getDocs, addDoc } from 'firebase/fires
 
 
 
+
 export function Gameplay(props){
     function levelImagePath(){
         if(props.level === "level one"){
@@ -76,19 +77,19 @@ export function Gameplay(props){
       
 
     
+    
     return (
         <>  
             <div className='top-bar'>
                 <button onClick={() => {props.setStage(1)}} className='back'>Back</button>
                 <div className='waldo-icon'></div>
-                {/* eslint-disable-next-line react/no-unescaped-entities*/}
                 <h1><span style={{color: "#0498c6"}}>Where's</span><span style={{color: "#f23925"}}> Waldo</span></h1>
                 <Timer setParentSeconds={setSeconds} win={win}/>
             </div>
             <img src={levelImagePath()} alt="level img"></img>
             
             {win ? (
-                <div className='win-popup'>
+                <div  className='win-popup'>
                     <h1 style={{ textAlign : "center"}}><span style={{color: "#f23925"}}>Congrat</span><span style={{color: "#0498c6"}}>ulations!</span></h1>
                     <input type="text" ref={inputRef} placeholder='Enter Name'/>
                     <button className='leaderboard' onClick={savePlayer}>Leaderboard</button>
