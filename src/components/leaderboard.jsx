@@ -12,7 +12,13 @@ export function Leaderboard(props){
 
 
     useEffect(() => {
-        const q = query(collection(getFirestore(), `${props.level}_winners`), orderBy("secondsTotal", "asc"), limit(16));
+        let q 
+
+        if(props.level !== 'none'){
+            q = query(collection(getFirestore(), `${props.level}_winners`), orderBy("secondsTotal", "asc"), limit(16));
+        }else{
+            q = query(collection(getFirestore(), 'level one_winners'), orderBy("secondsTotal", "asc"), limit(16));
+        }
         const unsubscribe = onSnapshot(q, (snapshot) => {
             const data = snapshot.docs.map((doc) => doc.data());
             setWinners(data);
