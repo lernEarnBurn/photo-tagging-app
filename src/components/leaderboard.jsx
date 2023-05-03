@@ -1,26 +1,27 @@
 import '../css/leaderboard.css'
-import { useState } from 'react'
 import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
+import { getFirestore, collection,  orderBy, limit, onSnapshot, query } from 'firebase/firestore'
 
 
 export function Leaderboard(props){
-        {/*have level as a collection or as a broader category to allow for each level
-           to have a seperate leaderboard*/}
-        const [leaders, setLeaders] = useState([{   
-                                                    name: "moshe",
-                                                    secondsTotal: 55,
-                                                    secondsFormatted: "01:22",
-                                                },
-                                                {   
-                                                    name: "pooopy",
-                                                    secondsTotal: 99,
-                                                    secondsFormatted: "02:55",
-                                                },
-                                                {   
-                                                    name: "ido",
-                                                    secondsTotal: 12,
-                                                    secondsFormatted: "00:12",
-                                                }])
+        
+   
+
+    const [winners, setWinners] = useState([]);
+
+    useEffect(() => {
+        const q = query(collection(getFirestore(), `${props.level}_winners`), orderBy("secondsTotal", "asc"), limit(16));
+        const unsubscribe = onSnapshot(q, (snapshot) => {
+            const data = snapshot.docs.map((doc) => doc.data());
+            setWinners(data);
+        });
+
+        return () => unsubscribe();
+    }, [props.level]);
+        
+    
+                        
 
     return (
         <>  
@@ -28,7 +29,7 @@ export function Leaderboard(props){
             <div className="page">
                 <h1 className="title"><span style={{color: "#f23925"}}>Leader</span><span style={{color: "#0498c6"}}>board</span></h1>
                 <ul className="leader-container">
-                    {leaders.map((player, index) => {
+                    {winners.map((player, index) => {
                         return <li key={index}>
                                     <div className='beginning'>
                                         <div className='number'>{index + 1}.</div>
@@ -44,5 +45,6 @@ export function Leaderboard(props){
 }
 
 Leaderboard.propTypes = {
-    setStage: PropTypes.func.isRequired
+    setStage: PropTypes.func.isRequired,
+    level: PropTypes.string.isRequired
 }

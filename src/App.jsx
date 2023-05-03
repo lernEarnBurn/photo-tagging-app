@@ -21,7 +21,7 @@ function App() {
     case 2:
       return <Gameplay  setStage={setStage} level={level}/>
     case 3:
-      return <Leaderboard setStage={setStage}/>
+      return <Leaderboard setStage={setStage} level={level}/>
   }  
   
 }
