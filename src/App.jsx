@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import { Gamestart } from './components/gamestart'
 import { Gameplay } from './components/gameplay'
-
+import { Leaderboard } from './components/leaderboard'
 
 import { getFirebaseConfig } from './firebase-config'
 import { initializeApp } from 'firebase/app'
@@ -17,9 +17,11 @@ function App() {
   
   switch (gameStage) {
     case 1:
-      return <Gamestart stage={gameStage} setStage={setStage} getLevel={getLevel}/>
+      return <Gamestart setStage={setStage} getLevel={getLevel}/>
     case 2:
-      return <Gameplay stage={gameStage} setStage={setStage} level={level}/>
+      return <Gameplay  setStage={setStage} level={level}/>
+    case 3:
+      return <Leaderboard/>
   }  
   
 }

@@ -5,12 +5,14 @@ import PropTypes from 'prop-types';
 export function Gamestart(props){
 
     function startGame(event){
-        props.setStage(props.stage + 1)
+        props.setStage(2)
         props.getLevel(event.target.className)
     }
 
     return(
-        <>
+        <>  
+            {/*May remove being as i dont like how it looks, but for now helps dev process*/}
+            <button className='leaderboard-start' onClick={() => {props.setStage(3)}}>Leaderboard</button>
             <div className="background">
                 <div className="level-container">
                     <div className='level one' onClick={(event) => startGame(event)}>
@@ -35,7 +37,6 @@ export function Gamestart(props){
 }
 
 Gamestart.propTypes = {
-    stage: PropTypes.number.isRequired,
     setStage: PropTypes.func.isRequired,
     getLevel: PropTypes.func.isRequired
 }

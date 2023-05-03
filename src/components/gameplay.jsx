@@ -56,7 +56,7 @@ export function Gameplay(props){
     return (
         <>  
             <div className='top-bar'>
-                <button onClick={() => {props.setStage(props.stage - 1)}} className='back'>Back</button>
+                <button onClick={() => {props.setStage(1)}} className='back'>Back</button>
                 <div className='waldo-icon'></div>
                 {/* eslint-disable-next-line react/no-unescaped-entities*/}
                 <h1><span style={{color: "#0498c6"}}>Where's</span><span style={{color: "#f23925"}}> Waldo</span></h1>
@@ -68,7 +68,7 @@ export function Gameplay(props){
                 <div className='win-popup'>
                     <h1 style={{ textAlign : "center"}}><span style={{color: "#f23925"}}>Congrat</span><span style={{color: "#0498c6"}}>ulations!</span></h1>
                     <input placeholder='Enter Name'/>
-                    <button>Leaderboard</button>
+                    <button className='leaderboard' onClick={() => {props.setStage(3)}}>Leaderboard</button>
                 </div>
             ) : null}
         </>
@@ -77,7 +77,6 @@ export function Gameplay(props){
 }
 
 Gameplay.propTypes = {
-    stage: PropTypes.number.isRequired,
     setStage: PropTypes.func.isRequired,
     level: PropTypes.string.isRequired
 }
